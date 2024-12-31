@@ -35,8 +35,8 @@ class _MyAppState extends State<MyApp> {
       platformVersion =
           await _ngeniusPlugin.createOrder(amount: '100', currency: 'USD') ??
               'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+    } on PlatformException catch(e) {
+      platformVersion = e.message ?? "Platform exception";
     } finally {
       print(platformVersion);
     }
